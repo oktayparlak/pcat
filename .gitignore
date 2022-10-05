@@ -145,7 +145,16 @@ dist
 tmp/
 temp/
 
+# Added by Oktay Parlak
 .prettierrc
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 
 # End of https://www.toptal.com/developers/gitignore/api/node
 
