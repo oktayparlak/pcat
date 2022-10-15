@@ -145,9 +145,6 @@ dist
 tmp/
 temp/
 
-# Added by Oktay Parlak
-.prettierrc
-
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
