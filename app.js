@@ -23,6 +23,9 @@ app.use(express.json());
 //ROUTES
 app.get('/', async (req, res) => {
   const photos = await Photo.find({});
+  console.log('-------------------------');
+  console.log(photos);
+  console.log('-------------------------');
   res.render('index', {
     photos,
   });
