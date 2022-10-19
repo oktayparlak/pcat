@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const fileUpload = require('express-fileUpload');
 const ejs = require('ejs');
 const path = require('path');
 const Photo = require('./models/Photo');
@@ -19,6 +20,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(fileUpload());
 
 //ROUTES
 app.get('/', async (req, res) => {
@@ -44,8 +46,20 @@ app.get('/add', (req, res) => {
 });
 
 app.post('/photos', async (req, res) => {
-  await Photo.create(req.body);
-  res.redirect('/');
+  //console.log(req.files.image);
+  //await Photo.create(req.body);
+  //res.redirect('/');
+
+  let uploadedImage = req.files.image;
+  let uploadPath = __dirname + '/public/uploads' + uploadedImage.name;
+
+  uploadedImage.mv(uploadPath, async () => {
+    await Photo.create({
+      ...req.body,
+      image: '/uploads/' + uploadedImage.name,
+    });
+    res.redirect('/');
+  });
 });
 
 const port = 5000;
