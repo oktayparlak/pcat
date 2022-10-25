@@ -1,18 +1,15 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const fileUpload = require('express-fileUpload');
 const methodOverride = require('method-override');
 const ejs = require('ejs');
 const photoController = require('./controllers/photoController');
 const pageController = require('./controllers/pageController');
+const databaseConnection = require('./databaseConnection');
 
 const app = express();
 
 //connect DB
-mongoose.connect('mongodb://localhost/pcat-test-db', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+databaseConnection.connectDB;
 
 //TEMPLATE ENGINE
 app.set('view engine', 'ejs');
@@ -39,7 +36,7 @@ app.get('/about', pageController.getAboutPage);
 app.get('/add', pageController.getAddPage);
 app.get('/photos/edit/:id', pageController.getEditPage);
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
