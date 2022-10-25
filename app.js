@@ -4,12 +4,24 @@ const methodOverride = require('method-override');
 const ejs = require('ejs');
 const photoController = require('./controllers/photoController');
 const pageController = require('./controllers/pageController');
-const databaseConnection = require('./databaseConnection');
 
 const app = express();
 
 //connect DB
-//databaseConnection.connectDB;
+mongoose
+  .connect(
+    'mongodb+srv://oktay:hsoxpLiqm2tYNCkh@cluster0.kpfsd7k.mongodb.net/?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => {
+    console.log('DB CONNECTED!');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 //TEMPLATE ENGINE
 app.set('view engine', 'ejs');
