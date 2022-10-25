@@ -9,7 +9,7 @@ const databaseConnection = require('./databaseConnection');
 const app = express();
 
 //connect DB
-databaseConnection.connectDB;
+//databaseConnection.connectDB;
 
 //TEMPLATE ENGINE
 app.set('view engine', 'ejs');
