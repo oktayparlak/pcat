@@ -50,6 +50,7 @@ app.get('/about', pageController.getAboutPage);
 app.get('/add', pageController.getAddPage);
 app.get('/photos/edit/:id', pageController.getEditPage);
 
+
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
