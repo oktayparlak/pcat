@@ -1,6 +1,8 @@
 const Photo = require('../models/Photo');
 const fs = require('fs');
-//const fileUpload = require('express-fileUpload');
+const fileUpload = require('express-fileUpload');
+
+app.use(fileUpload());
 
 exports.getAllPhotos = async (req, res) => {
   const page = req.query.page || 1;
