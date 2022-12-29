@@ -52,5 +52,5 @@ app.get('/photos/edit/:id', pageController.getEditPage);
 
 
 app.listen(port, () => {
-  console.log(`Server running on ${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });

@@ -1,11 +1,15 @@
 const Photo = require('../models/Photo');
 
 exports.getAddPage = (req, res) => {
-  res.render('add');
+  res.render('add', {
+    page_name: 'add',
+  });
 };
 
 exports.getAboutPage = (req, res) => {
-  res.render('about');
+  res.render('about', {
+    page_name: 'about',
+  });
 };
 
 exports.getEditPage = async (req, res) => {

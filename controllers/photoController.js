@@ -17,6 +17,7 @@ exports.getAllPhotos = async (req, res) => {
     photos: photos,
     current: page,
     pages: Math.ceil(totalPhotos / photosPerPage),
+    page_name: 'index',
   });
 
   //const photos = await Photo.find({});
