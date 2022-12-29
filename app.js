@@ -19,7 +19,7 @@ mongoose
     'mongodb+srv://' +
       process.env.USER +
       ':' +
-      process.env.PASSOWORD +
+      process.env.PASSWORD +
       '@cluster0.kpfsd7k.mongodb.net/?retryWrites=true&w=majority',
     {
       useNewUrlParser: true,
