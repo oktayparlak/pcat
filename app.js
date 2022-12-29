@@ -2,17 +2,25 @@ const express = require('express');
 const fileUpload = require('express-fileUpload');
 const methodOverride = require('method-override');
 const ejs = require('ejs');
+const env = require('dotenv');
+
 const photoController = require('./controllers/photoController');
 const pageController = require('./controllers/pageController');
 const mongoose = require('mongoose');
+
 const app = express();
+env.config();
 
 const port = process.env.PORT || 5000;
 
 //connect DB
 mongoose
   .connect(
-    'mongodb+srv://oktay:hsoxpLiqm2tYNCkh@cluster0.kpfsd7k.mongodb.net/?retryWrites=true&w=majority',
+    'mongodb+srv://' +
+      process.env.USER +
+      ':' +
+      process.env.PASSOWORD +
+      '@cluster0.kpfsd7k.mongodb.net/?retryWrites=true&w=majority',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -49,7 +57,6 @@ app.delete('/photos/:id', photoController.deletePhoto);
 app.get('/about', pageController.getAboutPage);
 app.get('/add', pageController.getAddPage);
 app.get('/photos/edit/:id', pageController.getEditPage);
-
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
